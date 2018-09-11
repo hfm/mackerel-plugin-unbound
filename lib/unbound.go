@@ -107,7 +107,7 @@ func (m *UnboundPlugin) parseStats(out string) (map[string]float64, error) {
 
 // FetchMetrics interface for mackerelplugin
 func (m *UnboundPlugin) FetchMetrics() (map[string]float64, error) {
-	out, err := exec.Command(m.UnboundControlPath).CombinedOutput()
+	out, err := exec.Command(m.UnboundControlPath, "stats").CombinedOutput()
 	if err != nil {
 		return nil, fmt.Errorf("%s: %s", err, out)
 	}
