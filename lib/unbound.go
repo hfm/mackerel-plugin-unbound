@@ -43,6 +43,32 @@ func (m *UnboundPlugin) unboundGraphDef() map[string]mp.Graphs {
 				{Name: "total.recursion.time.median", Label: "Time Median"},
 			},
 		},
+		// Enabled extended statistics
+		"mem": {
+			Label: labelPrefix + " Memory",
+			Unit:  mp.UnitInteger,
+			Metrics: []mp.Metrics{
+				{Name: "total.sbrk.avg", Label: "Sbrk Average"},
+				{Name: "cache.rrset", Label: "Cache rrset"},
+				{Name: "cache.message", Label: "Cache Message"},
+				{Name: "mod.iterator", Label: "Mod Iterator"},
+				{Name: "mod.validator", Label: "Mod Validator"},
+			},
+		},
+		"num.query.type": {
+			Label: labelPrefix + " Query Type",
+			Unit:  mp.UnitInteger,
+			Metrics: []mp.Metrics{
+				{Name: "*", Label: "*"},
+			},
+		},
+		"num.query.flags": {
+			Label: labelPrefix + " Query Flags",
+			Unit:  mp.UnitInteger,
+			Metrics: []mp.Metrics{
+				{Name: "*", Label: "*"},
+			},
+		},
 	}
 }
 
