@@ -1,5 +1,5 @@
-mackerel-plugin-unbound
-=======================
+mackerel-plugin-unbound [![Build Status](https://travis-ci.org/hfm/mackerel-plugin-unbound.svg?branch=master)](https://travis-ci.org/hfm/mackerel-plugin-unbound)
+=
 
 [Unbound](https://nlnetlabs.nl/projects/unbound/about/) custom metrics plugin for mackerel.io agent.
 
