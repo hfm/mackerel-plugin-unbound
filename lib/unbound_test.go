@@ -6,7 +6,7 @@ import (
 
 func TestGraphDefinition(t *testing.T) {
 	var unbound UnboundPlugin
-	expect := 3
+	expect := 6
 
 	graphdef := unbound.GraphDefinition()
 	if len(graphdef) != expect {
