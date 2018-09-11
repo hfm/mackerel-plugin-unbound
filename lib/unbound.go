@@ -17,56 +17,30 @@ func (m *UnboundPlugin) unboundGraphDef() map[string]mp.Graphs {
 			Label: labelPrefix + " Cache",
 			Unit:  mp.UnitInteger,
 			Metrics: []mp.Metrics{
-				{Name: "cachehits", Label: "Cache Hits"},
-				{Name: "cachemiss", Label: "Cache Miss"},
-				{Name: "prefetch", Label: "Prefetch"},
-				{Name: "recursivereplies", Label: "Recursive Replies"},
+				{Name: "total.num.cachehits", Label: "Cache Hits"},
+				{Name: "total.num.cachemiss", Label: "Cache Miss"},
+				{Name: "total.num.prefetch", Label: "Prefetch"},
+				{Name: "total.num.recursivereplies", Label: "Recursive Replies"},
 			},
 		},
 		"requestlist": {
 			Label: labelPrefix + " Request List",
 			Unit:  mp.UnitInteger,
 			Metrics: []mp.Metrics{
-				{Name: "avg", Label: "Average"},
-				{Name: "max", Label: "Max"},
-				{Name: "overwritten", Label: "Overwritten"},
-				{Name: "exceeded", Label: "Exceeded"},
-				{Name: "current.all", Label: "Current All"},
-				{Name: "current.user", Label: "Current User"},
+				{Name: "total.requestlist.avg", Label: "Average"},
+				{Name: "total.requestlist.max", Label: "Max"},
+				{Name: "total.requestlist.overwritten", Label: "Overwritten"},
+				{Name: "total.requestlist.exceeded", Label: "Exceeded"},
+				{Name: "total.requestlist.current.all", Label: "Current All"},
+				{Name: "total.requestlist.current.user", Label: "Current User"},
 			},
 		},
 		"recursion": {
 			Label: labelPrefix + " Recursion",
 			Unit:  mp.UnitFloat,
 			Metrics: []mp.Metrics{
-				{Name: "time.avg", Label: "Time Average"},
-				{Name: "time.median", Label: "Time Median"},
-			},
-		},
-		// Enabled extended statistics
-		"mem": {
-			Label: labelPrefix + " Memory",
-			Unit:  mp.UnitInteger,
-			Metrics: []mp.Metrics{
-				{Name: "total.sbrk.avg", Label: "Sbrk Average"},
-				{Name: "cache.rrset", Label: "Cache rrset"},
-				{Name: "cache.message", Label: "Cache Message"},
-				{Name: "mod.iterator", Label: "Mod Iterator"},
-				{Name: "mod.validator", Label: "Mod Validator"},
-			},
-		},
-		"num.query.type": {
-			Label: labelPrefix + " Query Type",
-			Unit:  mp.UnitInteger,
-			Metrics: []mp.Metrics{
-				{Name: "*", Label: "*"},
-			},
-		},
-		"num.query.flags": {
-			Label: labelPrefix + " Query Flags",
-			Unit:  mp.UnitInteger,
-			Metrics: []mp.Metrics{
-				{Name: "*", Label: "*"},
+				{Name: "total.recursion.time.avg", Label: "Time Average"},
+				{Name: "total.recursion.time.median", Label: "Time Median"},
 			},
 		},
 	}
