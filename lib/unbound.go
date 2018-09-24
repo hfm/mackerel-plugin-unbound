@@ -35,7 +35,7 @@ func (m *UnboundPlugin) unboundGraphDef() map[string]mp.Graphs {
 				{Name: "total.requestlist.current.user", Label: "Current User"},
 			},
 		},
-		"recursion": {
+		"total.recursion": {
 			Label: labelPrefix + " Recursion",
 			Unit:  mp.UnitFloat,
 			Metrics: []mp.Metrics{
@@ -48,11 +48,11 @@ func (m *UnboundPlugin) unboundGraphDef() map[string]mp.Graphs {
 			Label: labelPrefix + " Memory",
 			Unit:  mp.UnitInteger,
 			Metrics: []mp.Metrics{
-				{Name: "total.sbrk.avg", Label: "Sbrk Average"},
-				{Name: "cache.rrset", Label: "Cache rrset"},
-				{Name: "cache.message", Label: "Cache Message"},
-				{Name: "mod.iterator", Label: "Mod Iterator"},
-				{Name: "mod.validator", Label: "Mod Validator"},
+				{Name: "mem.total.sbrk.avg", Label: "Sbrk Average"},
+				{Name: "mem.cache.rrset", Label: "Cache rrset"},
+				{Name: "mem.cache.message", Label: "Cache Message"},
+				{Name: "mem.mod.iterator", Label: "Mod Iterator"},
+				{Name: "mem.mod.validator", Label: "Mod Validator"},
 			},
 		},
 		"num.query.type": {
