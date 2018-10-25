@@ -55,11 +55,11 @@ func (m *UnboundPlugin) unboundGraphDef() map[string]mp.Graphs {
 				{Name: "mem.mod.validator", Label: "Mod Validator"},
 			},
 		},
-		"num.query.type": {
+		"num.query.type.#": {
 			Label: labelPrefix + " Query Type",
 			Unit:  mp.UnitInteger,
 			Metrics: []mp.Metrics{
-				{Name: "*", Label: "*"},
+				{Name: "num.query.type.#", Label: "#"},
 			},
 		},
 		"num.query.flags": {
