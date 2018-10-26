@@ -35,12 +35,52 @@ func (m *UnboundPlugin) unboundGraphDef() map[string]mp.Graphs {
 				{Name: "total.requestlist.current.user", Label: "Current User"},
 			},
 		},
-		"recursion": {
+		"total.recursion": {
 			Label: labelPrefix + " Recursion",
 			Unit:  mp.UnitFloat,
 			Metrics: []mp.Metrics{
 				{Name: "total.recursion.time.avg", Label: "Time Average"},
 				{Name: "total.recursion.time.median", Label: "Time Median"},
+			},
+		},
+		// Enabled extended statistics
+		"mem": {
+			Label: labelPrefix + " Memory",
+			Unit:  mp.UnitInteger,
+			Metrics: []mp.Metrics{
+				{Name: "mem.total.sbrk.avg", Label: "Sbrk Average"},
+				{Name: "mem.cache.rrset", Label: "Cache rrset"},
+				{Name: "mem.cache.message", Label: "Cache Message"},
+				{Name: "mem.mod.iterator", Label: "Mod Iterator"},
+				{Name: "mem.mod.validator", Label: "Mod Validator"},
+			},
+		},
+		"num.query.type": {
+			Label: labelPrefix + " Query Type",
+			Unit:  mp.UnitInteger,
+			Metrics: []mp.Metrics{
+				{Name: "*", Label: "*"},
+			},
+		},
+		"num.query.flags": {
+			Label: labelPrefix + " Query Flags",
+			Unit:  mp.UnitInteger,
+			Metrics: []mp.Metrics{
+				{Name: "*", Label: "*"},
+			},
+		},
+		"num.answer.rcode": {
+			Label: labelPrefix + " Answer RCode",
+			Unit:  mp.UnitInteger,
+			Metrics: []mp.Metrics{
+				{Name: "*", Label: "*"},
+			},
+		},
+		"histogram": {
+			Label: labelPrefix + " Histogram",
+			Unit:  mp.UnitInteger,
+			Metrics: []mp.Metrics{
+				{Name: "*", Label: "*"},
 			},
 		},
 	}
