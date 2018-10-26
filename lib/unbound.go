@@ -76,6 +76,13 @@ func (m *UnboundPlugin) unboundGraphDef() map[string]mp.Graphs {
 				{Name: "*", Label: "*"},
 			},
 		},
+		"histogram": {
+			Label: labelPrefix + " Histogram",
+			Unit:  mp.UnitInteger,
+			Metrics: []mp.Metrics{
+				{Name: "*", Label: "*"},
+			},
+		},
 	}
 }
 
