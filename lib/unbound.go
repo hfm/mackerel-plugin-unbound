@@ -88,9 +88,8 @@ func (m *UnboundPlugin) unboundGraphDef() map[string]mp.Graphs {
 
 // UnboundPlugin mackerel plugin for Unbound
 type UnboundPlugin struct {
-	UnboundControlPath string
-	Tempfile           string
-	prefix             string
+	unboundControlCommands []string
+	prefix                 string
 }
 
 // MetricKeyPrefix interface for PluginWithPrefix
@@ -121,7 +120,7 @@ func (m *UnboundPlugin) parseStats(out string) (map[string]float64, error) {
 
 // FetchMetrics interface for mackerelplugin
 func (m *UnboundPlugin) FetchMetrics() (map[string]float64, error) {
-	out, err := exec.Command(m.UnboundControlPath, "stats").CombinedOutput()
+	out, err := exec.Command(m.unboundControlCommands[0], m.unboundControlCommands[1:]...).CombinedOutput()
 	if err != nil {
 		return nil, fmt.Errorf("%s: %s", err, out)
 	}
@@ -142,13 +141,27 @@ func (m *UnboundPlugin) GraphDefinition() map[string]mp.Graphs {
 // Do the plugin
 func Do() {
 	optUnboundControlPath := flag.String("unbound-control", "/usr/sbin/unbound-control", "Path to unbound-control")
+	optUnboundControlOptions := flag.String("option", "", "unbound-control option")
+	unboundControlNoReset := flag.Bool("no-reset", false, "use sub command stats_noreset to get stats")
 	optTempfile := flag.String("tempfile", "", "Temp file name")
 	optMetricKeyPrefix := flag.String("metric-key-prefix", "unbound", "metric key prefix")
 	flag.Parse()
 
 	var unbound UnboundPlugin
 
-	unbound.UnboundControlPath = *optUnboundControlPath
+	unbound.unboundControlCommands = []string{
+		*optUnboundControlPath,
+	}
+
+	if *optUnboundControlOptions != "" {
+		unbound.unboundControlCommands = append(unbound.unboundControlCommands, strings.Split(*optUnboundControlOptions, " ")...)
+	}
+	if *unboundControlNoReset {
+		unbound.unboundControlCommands = append(unbound.unboundControlCommands, "stats_noreset")
+	} else {
+		unbound.unboundControlCommands = append(unbound.unboundControlCommands, "stats")
+	}
+
 	unbound.prefix = *optMetricKeyPrefix
 	helper := mp.NewMackerelPlugin(&unbound)
 	helper.Tempfile = *optTempfile
